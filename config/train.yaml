@@ -1,0 +1,45 @@
+# ========== 模型配置 ==========
+model:
+  name: 'DynamicJSCC-R'
+  K_max: 48
+  c: 128
+  in_channels: 3
+  out_channels: 3
+  snr_db_max: 28
+  snr_db_min: 0
+  cr_max: 1.0
+  cr_min: 0.1
+# 数据集配置
+dataset:
+  dataroot: 'D:\dataset\CIFAR10'
+  batch_size: 32
+  num_workers: 4
+  shuffle: True
+  preprocess: 'crop'
+  crop_size: 32
+  num_classes: 10
+# 训练配置
+train:
+  epochs: 300
+  lr_max : 0.001
+  lr_min : 0.000001
+  beta: 200
+  resume_training: True
+  resume: "./checkpoints/model_weights/latest.pth"
+# 测试配置
+val:
+  use_eval : 1
+  snr_db_valmax: 26
+  snr_db_valmin: -2
+  val_epochs : 2
+# checkpoint
+  save_dir: "./checkpoints"
+  save_epochs: 3
+# 其他配置
+  use_gpu : True
+  gpu_ids : "0"
+  continue_train: False
+  save_vis: True          # 是否保存可视化图像
+  vis_interval: 200      # 每隔多少 batch 保存一次
+  vis_max_samples: 8       # 每次保存多少对图像
+  verbose: True
